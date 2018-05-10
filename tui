@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var path = require('path');
+var cloneTemplate = require('./utils/cloneTemplate')
+var inputStreamPipe = require('./utils/streamPipe')
+var infoMerge = require('./utils/infoMerge')
+var installDependences = require('./utils/installDependences')
+
+program
+  // .usage('<cmd> [options]')
+  .version('0.0.1', '-v, --version')
+  .command('init <dir>')
+  .action(function (dir) {
+    cloneTemplate(dir)
+      .then(function () {
+
+        inputStreamPipe()
+          .then(function (answers) {
+
+            infoMerge(answers, process.cwd())
+              .then(function () {
+                installDependences(process.cwd(), dir)
+              })
+              .catch(function (err) {
+                console.log(err)
+              })
+
+          })
+          .catch(function (err) {
+            console.log(err)
+          })
+
+      })
+      .catch(function (err) {
+        console.log(err)
+      })
+  })
+
+program.parse(process.argv);
