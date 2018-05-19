@@ -8,6 +8,7 @@ var cloneTemplate = function (dirname) {
     console.log(color.yellow('template downloading...'))
     if (shx.exec('git clone ' + templatePath + ' ' + dirname, {silent: true}).code === 0) { //success
       shx.cd(dirname)
+      shx.cd('rm -rf .git')
       resolve()
     } else {
       reject('error in clone template, please check network')
