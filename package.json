@@ -1,6 +1,6 @@
 {
   "name": "tui-cli",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "fast init tui project with vue && webpack && vue-router && tui",
   "main": "tui",
   "bin": {
