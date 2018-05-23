@@ -1,12 +1,12 @@
 {
-  "name": "tui-cli",
-  "version": "1.0.9",
-  "description": "fast init tui project with vue && webpack && vue-router && tui",
+  "name": "tui",
+  "version": "v1.0.0",
+  "description": "tui description",
   "main": "tui",
   "bin": {
     "tui": "tui"
   },
-  "author": "bennnis",
+  "author": "author",
   "license": "MIT",
   "dependencies": {
     "colors": "^1.2.4",

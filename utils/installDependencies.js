@@ -1,12 +1,15 @@
 var shx = require('shelljs')
 var color = require('colors')
 
-var installDependences = function (path, dirname) {
-  console.log(color.yellow('install dependences...'))
+var installDependencies = function (path, dirname) {
+  console.log(color.yellow('install dependencies...'))
+  
+  shx.cd(dirname)
   shx.exec('npm install', {silent: false})
-  shx.cd('..')
+  shx.exec('rm -rf .git')
+  
   console.log(color.yellow('start project with: '))
   console.log(color.blue('cd '+ dirname), '&&', color.blue('npm run dev'))
 }
 
-module.exports = installDependences
+module.exports = installDependencies

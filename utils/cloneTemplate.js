@@ -7,11 +7,9 @@ var cloneTemplate = function (dirname) {
   return new Promise(function (resolve, reject) {
     console.log(color.yellow('template downloading...'))
     if (shx.exec('git clone ' + templatePath + ' ' + dirname, {silent: true}).code === 0) { //success
-      shx.cd(dirname)
-      shx.exec('rm -rf .git')
       resolve()
     } else {
-      reject('error in clone template, please check network')
+      reject(new Error('error in clone template, please check network'))
     }
   })
 }

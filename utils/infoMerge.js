@@ -10,7 +10,7 @@ var infoMerge = function (parmas, projectDir) {
         reject(err)
       }
       
-      resolve(1)
+      resolve()
     });
   })
 }
