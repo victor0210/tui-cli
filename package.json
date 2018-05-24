@@ -1,18 +1,25 @@
 {
-  "name": "tui",
-  "version": "v1.0.0",
-  "description": "tui description",
+  "name": "tui-cli",
+  "version": "1.0.9",
+  "description": "fast init tui project with vue && webpack && vue-router && tui",
   "main": "tui",
   "bin": {
     "tui": "tui"
   },
-  "author": "author",
+  "author": "bennnis",
   "license": "MIT",
   "dependencies": {
+    "chalk": "^2.4.1",
     "colors": "^1.2.4",
     "commander": "^2.15.1",
+    "fs-extra": "^6.0.1",
     "git-clone": "^0.1.0",
     "inquirer": "^5.2.0",
-    "shelljs": "^0.8.2"
+    "semver": "^5.5.0",
+    "shelljs": "^0.8.2",
+    "validate-npm-package-name": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=8"
   }
 }

@@ -1,0 +1,48 @@
+#!/usr/bin/env node
+
+const program = require('commander');
+const path = require('path');
+const semver = require('semver')
+const chalk = require('chalk')
+const requiredVersion = require('../package.json').engines.node
+
+// 如果当前使用node版本不符合package.josn中的enginer指定的版本
+if (!semver.satisfies(process.version, requiredVersion)) {
+  console.log(chalk.red(
+    `You are using Node ${process.version}, but this version of vue-cli ` +
+    `requires Node ${requiredVersion}.\nPlease upgrade your Node version.`
+  ))
+  process.exit(1)
+}
+
+program
+  .usage('<command> [options]')
+  .version(require('../package').version)
+  .description('create a new project powered by tui-cli-service')
+  .option('-f, --force', 'Overwrite target directory if it exists')
+  .command('init <project-name>')
+  .action((name) => {
+    require('../lib/create.js')(name, program)
+  })
+  program.parse(process.argv);
+// commander passes the Command object itself as options
+// commander 将命令对象本身作为选项传递。
+//extract only actual options into a fresh object
+// 将实际的选项提取到一个新的对象中。
+  // function cleanArgs (cmd) {
+  //   const args = {}
+  //   console.log(cmd.options)
+  //   cmd.options.forEach(o => {
+  //     const key = o.long.replace(/^--/, '')
+  //     console.log(o)
+  //     console.log(key)
+  //     // if an option is not present and Command has a method with the same name
+  //     // it should not be copied
+  //     //如果一个选项不存在，并且命令有一个同名的方法。
+  //    // 它不应该被复制。
+  //     if (typeof cmd[key] !== 'function') {
+  //       args[key] = cmd[key]
+  //     }
+  //   })
+  //   return args
+  // }
